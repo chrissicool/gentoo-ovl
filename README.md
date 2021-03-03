@@ -1,3 +1,5 @@
+[![Continuous Integration](https://github.com/chrissicool/gentoo-ovl/workflows/CI/badge.svg)](https://github.com/chrissicool/gentoo-ovl/actions?query=workflow%3ACI)
+
 # gentoo-ovl
 
 This is chrissicool's private ebuild collection.
