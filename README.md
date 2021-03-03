@@ -2,10 +2,26 @@
 
 This is chrissicool's private ebuild collection.
 
-## Add overlay
+## Usage
 
-Using `app-eselect/eselect-repository`, just run the following command.
+Add this to `/etc/portage/repos.conf/gentoo-ovl.conf`:
 
-> $ eselect repository add gentoo-ovl git https://github.com/chrissicool/gentoo-ovl.git
+```
+[gentoo-ovl]
+location = /var/db/repos/gentoo-ovl/
+sync-type = git
+sync-uri = https://github.com/chrissicool/gentoo-ovl.git
+auto-sync = yes
+```
 
-Then sync as normal.
+or using `app-eselect/eselect-repository`, just run the following command:
+
+```
+eselect repository add gentoo-ovl git https://github.com/chrissicool/gentoo-ovl.git
+```
+
+or install using `app-portage/layman` with the following command:
+
+```
+layman -o https://raw.github.com/chrissicool/gentoo-ovl/master/overlay.xml -f -a gentoo-ovl
+```

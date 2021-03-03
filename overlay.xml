@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
+<repositories xmlns="" version="1.0">
+  <repo quality="experimental" status="unofficial">
+    <name>gentoo-ovl</name>
+    <description>This is chrissicool's private ebuild collection.</description>
+    <homepage>http://github.com/chrissicool/gentoo-ovl</homepage>
+    <owner>
+      <email>chrissicool@gmail.com</email>
+      <name>Christian Ludwig</name>
+    </owner>
+    <source type="git">git://github.com/chrissicool/gentoo-ovl.git</source>
+    <source type="git">http://github.com/chrissicool/gentoo-ovl.git</source>
+    <feed>https://github.com/chrissicool/gentoo-ovl/commits/master.atom</feed>
+  </repo>
+</repositories>
