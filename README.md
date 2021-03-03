@@ -27,3 +27,11 @@ or install using `app-portage/layman` with the following command:
 ```
 layman -o https://raw.github.com/chrissicool/gentoo-ovl/master/overlay.xml -f -a gentoo-ovl
 ```
+
+## Packages
+
+The following packages are available in this overlay:
+
+*   dev-vcs/got
+
+    A version control system which prioritizes ease of use and simplicity over flexibility.
