@@ -3,18 +3,18 @@
 
 EAPI=7
 
-DESCRIPTION="A version control system which prioritizes ease of use and simplicity over flexibility."
+DESCRIPTION="A version control system which prioritizes ease of use and simplicity."
 HOMEPAGE="http://gameoftrees.org/"
 LICENSE="ISC"
 
 inherit autotools
 
 if [[ ${PV} = *9999* ]]; then
-    inherit git-r3
-    EGIT_REPO_URI="https://git.gameoftrees.org/got-portable.git"
-    EGIT_BRANCH="linux"
+	inherit git-r3
+	EGIT_REPO_URI="https://git.gameoftrees.org/got-portable.git"
+	EGIT_BRANCH="linux"
 else
-    eerror "There is no stable release for portable got, yet."
+	eerror "There is no stable release for portable got, yet."
 fi
 
 KEYWORDS="~amd64"
@@ -24,17 +24,17 @@ SLOT="0"
 RESTRICT=""
 
 BDEPEND="(
-    virtual/pkgconfig
+	virtual/pkgconfig
 )"
 DEPEND="(
-    app-crypt/libmd
-    dev-libs/libbsd
-    sys-libs/ncurses
-    sys-libs/zlib
+	app-crypt/libmd
+	dev-libs/libbsd
+	sys-libs/ncurses
+	sys-libs/zlib
 )"
 
 src_prepare() {
 	default
 	PREFIX="${EPREFIX}/usr" \
-	    eautoreconf --prefix="${EPREFIX}/usr"
+		eautoreconf --prefix="${EPREFIX}/usr"
 }
