@@ -15,9 +15,9 @@ if [[ ${PV} = *9999* ]]; then
 	EGIT_BRANCH="linux"
 else
 	eerror "There is no stable release for portable got, yet."
+	KEYWORDS="~amd64"
 fi
 
-KEYWORDS="~amd64"
 IUSE=""
 SLOT="0"
 
