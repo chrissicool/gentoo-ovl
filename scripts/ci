@@ -1,0 +1,61 @@
+#!/bin/sh
+
+set -eu
+
+
+die() {
+	echo ERROR: "$@" >&2
+	exit 1
+}
+
+info() {
+	echo ""
+	echo "####"
+	echo "#"
+	echo "#" "$@"
+	echo "#"
+	echo "####"
+	echo ""
+}
+
+dirfor() {
+	local dir
+	local prg
+
+	prg="$1"
+	if [ ! -e "$prg" ]; then
+		case "$prg" in
+		*/*)
+			die "Cannot determine script path."
+			;;
+		*)
+			prg=$(command -v -- "$prg") \
+				|| die "Cannot determine script command."
+			;;
+		esac
+	fi
+	dir=$( cd -P -- "$(dirname -- "$prg")" && pwd -P ) \
+		|| die "Cannot determine script directory."
+
+	printf '%s\n' "$dir"
+}
+
+OVL=gentoo-ovl
+SCRIPTS=$( dirfor "$0" )
+PATH="$SCRIPTS:$PATH"
+
+[ -f ./Dockerfile ] || die "Need to run from repository root."
+
+info "Setup:   dockerenv"
+docker-compose build --no-cache
+
+info "Check:   repoman"
+dockerenv sh -c "emerge dev-vcs/git app-portage/repoman && repoman --straight-to-stable -dx full"
+
+info "Package: dev-vcs/got"
+dockerenv sh -c "emerge dev-vcs/git && echo 'dev-vcs/got::$OVL **' >> /etc/portage/package.accept_keywords && emerge dev-vcs/got::$OVL"
+
+info "Package: dev-util/babeltrace"
+dockerenv sh -c "USE='-python' emerge dev-util/babeltrace::$OVL"
+dockerenv sh -c "USE=' python' emerge dev-util/babeltrace::$OVL"
+dockerenv sh -c "emerge dev-util/babeltrace:0 dev-util/babeltrace:2::$OVL"
