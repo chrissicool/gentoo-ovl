@@ -14,8 +14,11 @@ on:
   workflow_dispatch:
 
 jobs:
-  repoman:
+  ci:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - uses: hacking-gentoo/action-repoman@master
+    - name: Check out repository
+      uses: actions/checkout@v2
+    - name: Continuous Integration
+      run: |
+        scripts/ci
