@@ -53,7 +53,7 @@ info "Check:   repoman"
 dockerenv sh -c "emerge dev-vcs/git app-portage/repoman && repoman --straight-to-stable -dx full"
 
 info "Package: dev-vcs/got"
-dockerenv sh -c "emerge dev-vcs/git && echo 'dev-vcs/got::$OVL **' >> /etc/portage/package.accept_keywords && emerge dev-vcs/got::$OVL"
+dockerenv sh -c "emerge dev-vcs/git && echo 'dev-vcs/got::$OVL **' >> /etc/portage/package.accept_keywords/got && emerge dev-vcs/got::$OVL"
 
 info "Package: dev-util/babeltrace"
 dockerenv sh -c "USE='-python' emerge dev-util/babeltrace::$OVL"
