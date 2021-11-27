@@ -47,7 +47,7 @@ PATH="$SCRIPTS:$PATH"
 [ -f ./Dockerfile ] || die "Need to run from repository root."
 
 info "Setup:   dockerenv"
-docker-compose build --no-cache
+docker-compose build --no-cache --build-arg NPROC=$( nproc )
 
 info "Check:   repoman"
 dockerenv sh -c "emerge dev-vcs/git app-portage/repoman && repoman --straight-to-stable -dx full"
