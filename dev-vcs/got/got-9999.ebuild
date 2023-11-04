@@ -12,16 +12,13 @@ inherit autotools
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.gameoftrees.org/got-portable.git"
-	EGIT_BRANCH="linux"
+	EGIT_BRANCH="portable"
 else
-	eerror "There is no stable release for portable got, yet."
+	SRC_URI="https://gameoftrees.org/releases/portable/${PN}-portable-${PV}.tar.gz"
 	KEYWORDS="~amd64"
 fi
 
-IUSE=""
 SLOT="0"
-
-RESTRICT=""
 
 BDEPEND="(
 	virtual/pkgconfig
@@ -29,6 +26,7 @@ BDEPEND="(
 DEPEND="(
 	app-crypt/libmd
 	dev-libs/libbsd
+	dev-libs/libevent
 	sys-libs/ncurses
 	sys-libs/zlib
 )"
