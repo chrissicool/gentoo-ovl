@@ -9,6 +9,7 @@ COPY . /gentoo-ovl
 ARG NPROC
 
 RUN mkdir -p /etc/portage/repos.conf
+RUN echo -e "[gentoo]\nlocation = /var/db/repos/gentoo\nauto-sync = no" > /etc/portage/repos.conf/gentoo
 RUN echo -e "[gentoo-ovl]\nlocation = /gentoo-ovl\nauto-sync = no" > /etc/portage/repos.conf/gentoo-ovl
 RUN echo 'ACCEPT_KEYWORDS="~${ARCH}"' >> /etc/portage/make.conf
 RUN echo 'ACCEPT_PROPERTIES="* -interactive"' >> /etc/portage/make.conf
